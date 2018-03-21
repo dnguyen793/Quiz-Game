@@ -2,7 +2,7 @@
 $(document).ready(initalizeApp);
 
 function initalizeApp() {
-    debugger;
+    // debugger;
     let test = new Quiz();
     $("#button").on('click',function () {
         test.checkAnswers();
@@ -51,21 +51,21 @@ class Quiz {
 
     }
 
-
-
     calculation( totalQuestions, correctAnswer ){
         const result = parseInt((correctAnswer/totalQuestions)*100);
         console.log( totalQuestions, correctAnswer, result);
 
         if( result >= 75 ){
             this.displayMessage(" You got " +correctAnswer+ " correct answer. You passed!");
+            this.resetGame();
         }
         else {
             this.displayMessage(" You got " +correctAnswer+ " correct answer.:( try again");
+            this.resetGame();
         }
 
     }
-git 
+
     displayMessage( message ){
         const div = $("<div>");
         const disMessage = $("<span>", {
@@ -75,6 +75,14 @@ git
 
         div.append(disMessage);
         $("#displayMessage").append(div);
+    }
+
+    resetGame (){
+        this.counter = 0;
+        setTimeout( ()  => {
+            $("#displayMessage").text( " ");
+            this.displayMessage ( " " )
+        }, 5000)
     }
 
 }
