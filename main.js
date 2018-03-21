@@ -6,7 +6,16 @@ function initalizeApp() {
     let test = new Quiz();
     $("#button").on('click',function () {
         test.checkAnswers();
-        console.log(test.counter)
+        console.log(test.counter);
+        $('input[name=question1]').prop('checked',false);
+        $('input[name=question2]').prop('checked',false);
+        $('input[name=question3]').prop('checked',false);
+        $('input[name=question4]').prop('checked',false);
+        $('input[name=question5]').prop('checked',false);
+        $('input[name=question6]').prop('checked',false);
+        $('input[name=question7]').prop('checked',false);
+        $('input[name=question8]').prop('checked',false);
+
     })
 }
 
@@ -47,7 +56,7 @@ class Quiz {
         if(question8selceted === 'USA'){
             this.counter++
         }
-        this.calculation( 3, this.counter);
+        this.calculation( 8, this.counter);
 
     }
 
