@@ -1,15 +1,16 @@
+
 $(document).ready(initalizeApp);
 
 function initalizeApp() {
     debugger;
-    let test = new quiz();
+    let test = new Quiz();
     $("#button").on('click',function () {
         test.checkAnswers();
         console.log(test.counter)
     })
 }
 
-class quiz {
+class Quiz {
     constructor(){
     this.counter = 0;
     }
@@ -46,15 +47,34 @@ class quiz {
         if(question8selceted === 'USA'){
             this.counter++
         }
+        this.calculation( 3, this.counter);
 
     }
 
-    displayMessage(){
+
+
+    calculation( totalQuestions, correctAnswer ){
+        const result = parseInt((correctAnswer/totalQuestions)*100);
+        console.log( totalQuestions, correctAnswer, result);
+
+        if( result >= 75 ){
+            this.displayMessage(" You got " +correctAnswer+ " correct answer. You passed!");
+        }
+        else {
+            this.displayMessage(" You got " +correctAnswer+ " correct answer.:( try again");
+        }
 
     }
+git 
+    displayMessage( message ){
+        const div = $("<div>");
+        const disMessage = $("<span>", {
+            text: message,
+            class: 'message'
+        });
 
-    calculation(){
-
+        div.append(disMessage);
+        $("#displayMessage").append(div);
     }
 
 }
